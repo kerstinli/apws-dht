@@ -2,7 +2,7 @@
 FROM ghcr.io/astral-sh/uv:0.12-python3.12-trixie-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    pipx python3-lgpio swig python3-dev liblgpio-dev \
+    pipx swig python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /dht11
