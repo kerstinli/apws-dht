@@ -7,7 +7,7 @@ import board
 import requests
 
 # The API endpoint
-opensearch_url = "https://opensearch:9200/weather"
+opensearch_url = "https://opensearch:9200/weather/_doc"
 
 # 5 Minuten in Sekunden
 ticktack = 5 * 60
@@ -33,6 +33,10 @@ def main() -> None:
                     auth=opensearch_auth,
                     verify=opensearch_ca_cert,
                     timeout=10,
+                )
+                print(
+                    f"Übertragen: {weather_data['temperature']} °C, "
+                    f"{weather_data['humidity']} %, Status {response.status_code}"
                 )
             except RuntimeError as error:
                 # DHT11 kann gelegentlich eine fehlerhafte Messung liefern.
