@@ -19,7 +19,7 @@ def main() -> None:
                 weather_data = {
                     "temperature": sensor.temperature,
                     "humidity": sensor.humidity,
-                    "name": "dht",
+                    "name": "room",
                 }
                 # A POST request to the API
                 response = requests.post(
@@ -37,8 +37,6 @@ def main() -> None:
             except requests.exceptions.RequestException as error:
                 # Netzwerk-/TLS-/Auth-Fehler beim POST an OpenSearch.
                 print(f"Übertragungsfehler: {error}")
-            # DHT11 sollte nicht häufiger als etwa alle 2 Sekunden
-            # ausgelesen werden.
             # Programm für 5 Minuten anhalten
             time.sleep(ticktack)
     except KeyboardInterrupt:
