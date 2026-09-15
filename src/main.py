@@ -1,11 +1,13 @@
 import os
 import time
+from datetime import datetime, timezone
+
 import adafruit_dht
 import board
 import requests
 
 # The API endpoint
-opensearch_url = "https://192.168.8.168:9200/posts"
+opensearch_url = "https://opensearch:9200/weather/_doc"
 
 # 5 Minuten in Sekunden
 ticktack = 5 * 60
@@ -22,13 +24,9 @@ def main() -> None:
                 weather_data = {
                     "temperature": sensor.temperature,
                     "humidity": sensor.humidity,
-                    #"date": sensor.humidity,
-                    #print(f"Temperatur: {temperature:.1f} °C")
-                    #print(f"Luftfeuchtigkeit: {humidity:.1f} %")
-                    #print("-" * 30)
+                    "date": datetime.now(timezone.utc).isoformat(),
                 }
                 # A POST request to the API
-                #response = requests.post(opensearch_url, json=weather_data)
                 response = requests.post(
                     opensearch_url,
                     json=weather_data,
