@@ -7,7 +7,7 @@ import board
 import requests
 
 # The API endpoint
-opensearch_url = "https://opensearch:9200/weather/_doc"
+opensearch_url = "https://opensearch:9200/weather"
 
 # 5 Minuten in Sekunden
 ticktack = 5 * 60
