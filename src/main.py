@@ -1,19 +1,14 @@
-import os
 import time
-from datetime import datetime, timezone
 
 import adafruit_dht
 import board
 import requests
 
 # The API endpoint
-opensearch_url = "https://opensearch:9200/weather/_doc"
+logstash_url = "http://logstash:5044"
 
 # 5 Minuten in Sekunden
 ticktack = 5 * 60
-
-opensearch_ca_cert = os.environ["OPENSEARCH_CA_CERT"]  # z.B. "/certs/ca.pem"
-opensearch_auth = (os.environ["OPENSEARCH_USER"], os.environ["OPENSEARCH_PASSWORD"])
 
 def main() -> None:
     # DHT11 DATA -> BCM GPIO 4 (physischer Pin 7)
@@ -24,14 +19,12 @@ def main() -> None:
                 weather_data = {
                     "temperature": sensor.temperature,
                     "humidity": sensor.humidity,
-                    "date": datetime.now(timezone.utc).isoformat(),
+                    "name": "dht",
                 }
                 # A POST request to the API
                 response = requests.post(
-                    opensearch_url,
+                    logstash_url,
                     json=weather_data,
-                    auth=opensearch_auth,
-                    verify=opensearch_ca_cert,
                     timeout=10,
                 )
                 print(
