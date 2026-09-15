@@ -9,7 +9,7 @@ WORKDIR /dht11
 
 RUN uv init
 
-RUN uv add adafruit-circuitpython-dht lgpio
+RUN uv add adafruit-circuitpython-dht lgpio requests
 
 COPY main.py .
 
