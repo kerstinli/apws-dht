@@ -16,15 +16,15 @@ def main() -> None:
     try:
         while True:
             try:
-                weather_data = {
+                dht_data = {
                     "temperature": sensor.temperature,
                     "humidity": sensor.humidity,
-                    "name": "room",
+                    "name": "dht",
                 }
                 # A POST request to the API
                 response = requests.post(
                     logstash_url,
-                    json=weather_data,
+                    json=dht_data,
                     timeout=10,
                 )
                 print(
