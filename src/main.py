@@ -28,8 +28,8 @@ def main() -> None:
                     timeout=10,
                 )
                 print(
-                    f"Übertragen: {weather_data['temperature']} °C, "
-                    f"{weather_data['humidity']} %, Status {response.status_code}"
+                    f"Übertragen: {dht_data['temperature']} °C, "
+                    f"{dht_data['humidity']} %, Status {response.status_code}"
                 )
             except RuntimeError as error:
                 # DHT11 kann gelegentlich eine fehlerhafte Messung liefern.
