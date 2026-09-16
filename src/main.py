@@ -19,7 +19,7 @@ def main() -> None:
                 dht_data = {
                     "temperature": sensor.temperature,
                     "humidity": sensor.humidity,
-                    "name": "near the plant",
+                    "name": "near_the_plant",
                 }
                 # A POST request to the API
                 response = requests.post(
