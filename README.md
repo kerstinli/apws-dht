@@ -27,12 +27,12 @@ The target endpoint and GPIO pin can be set via environment variables or command
 
 ## Running locally
 
-Requires Python 3.12+ and a board supported by [Adafruit Blinka](https://github.com/adafruit/Adafruit_Blinka) (e.g. Raspberry Pi), since the DHT11 sensor library needs real GPIO access.
+Requires Python 3.12+, [uv](https://github.com/astral-sh/uv), and a board supported by [Adafruit Blinka](https://github.com/adafruit/Adafruit_Blinka) (e.g. Raspberry Pi), since the DHT11 sensor library needs real GPIO access.
 
 ```bash
 cd src
-pip install adafruit-circuitpython-dht lgpio requests
-python main.py --logstash-url http://localhost:5044 --pin D4
+uv add adafruit-circuitpython-dht lgpio requests
+uv run main.py --logstash-url http://localhost:5044 --pin D4
 ```
 
 ## Running with Docker
