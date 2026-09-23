@@ -15,8 +15,8 @@ logging.basicConfig(
     stream=sys.stdout,
 )
 
-# 5 minutes
-ticktack = 5 * 60
+# 60 minutes
+ticktack = 60 * 60
 
 def execute(logstash_url: str, pin_name: str) -> None:
     """
